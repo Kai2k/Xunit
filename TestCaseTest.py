@@ -37,9 +37,9 @@ class TestCaseTest(TestCase):
         assert ("setUp tearDown " == test.log)
 
 
-TestCaseTest("testTemplateMethod").run()
-TestCaseTest("testResult").run()
-TestCaseTest("testFailResultFormatted").run()
-TestCaseTest("testFailedResult").run()
-TestCaseTest("testFailedSetUpReported").run()
-TestCaseTest("testTeardownCalledGivenFailedTest").run()
+print(TestCaseTest("testTemplateMethod").run().summary())
+print(TestCaseTest("testResult").run().summary())
+print(TestCaseTest("testFailResultFormatted").run().summary())
+print(TestCaseTest("testFailedResult").run().summary())
+print(TestCaseTest("testFailedSetUpReported").run().summary())
+print(TestCaseTest("testTeardownCalledGivenFailedTest").run().summary())
