@@ -1,4 +1,5 @@
 from MyException import MyException
+from MySetupException import MySetupException
 from TestResult import TestResult
 
 
@@ -15,7 +16,11 @@ class TestCase:
     def run(self):
         result = TestResult()
         result.testStarted()
-        self.setUp()
+        try:
+            self.setUp()
+        except MySetupException:
+            result.setupFailed()
+            return result
         try:
             method = getattr(self, self.name)
             method()
