@@ -7,14 +7,14 @@ class WasRun(TestCase):
         super().__init__(name)
         self.log = ""
 
-    def testMethod(self):
+    def test_method(self):
         self.log = self.log + "testMethod "
 
-    def testBrokenMethod(self):
+    def test_broken_method(self):
         raise MyException
 
-    def setUp(self):
+    def setup(self):
         self.log = "setUp "
 
-    def tearDown(self):
+    def teardown(self):
         self.log = self.log + "tearDown "

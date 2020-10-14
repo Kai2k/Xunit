@@ -1,30 +1,35 @@
 from MyException import MyException
 from MySetupException import MySetupException
-from TestResult import TestResult
 
 
 class TestCase:
     def __init__(self, name):
         self.name = name
 
-    def setUp(self):
+    def setup(self):
         pass
 
-    def tearDown(self):
+    def teardown(self):
         pass
 
-    def run(self):
-        result = TestResult()
-        result.testStarted()
+    def run(self, result):
+        result.test_started()
+        if self.try_run_setup_method(result) == 1:
+            return
+        self.try_run_test_method(result)
+        self.teardown()
+
+    def try_run_setup_method(self, result):
         try:
-            self.setUp()
+            self.setup()
         except MySetupException:
-            result.setupFailed()
-            return result
+            result.setup_failed()
+            return 1
+        return 0
+
+    def try_run_test_method(self, result):
         try:
             method = getattr(self, self.name)
             method()
         except MyException:
-            result.testFailed()
-        self.tearDown()
-        return result
+            result.test_failed()

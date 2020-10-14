@@ -4,5 +4,5 @@ from TestCase import TestCase
 
 class WasNotRun(TestCase):
 
-    def setUp(self):
+    def setup(self):
         raise MySetupException

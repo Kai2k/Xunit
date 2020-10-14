@@ -4,13 +4,13 @@ class TestResult:
         self.setUpFailCount = 0
         self.errorCount = 0
 
-    def testStarted(self):
+    def test_started(self):
         self.runCount = self.runCount + 1
 
-    def setupFailed(self):
+    def setup_failed(self):
         self.setUpFailCount = self.setUpFailCount + 1
 
-    def testFailed(self):
+    def test_failed(self):
         self.errorCount = self.errorCount + 1
 
     def summary(self):
