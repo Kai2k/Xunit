@@ -31,9 +31,15 @@ class TestCaseTest(TestCase):
         result = test.run()
         assert ("1 run, 0 failed, 1 failed setups" == result.summary())
 
+    def testTeardownCalledGivenFailedTest(self):
+        test = WasRun("testBrokenMethod")
+        test.run()
+        assert ("setUp tearDown " == test.log)
+
 
 TestCaseTest("testTemplateMethod").run()
 TestCaseTest("testResult").run()
 TestCaseTest("testFailResultFormatted").run()
 TestCaseTest("testFailedResult").run()
 TestCaseTest("testFailedSetUpReported").run()
+TestCaseTest("testTeardownCalledGivenFailedTest").run()
