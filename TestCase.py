@@ -1,3 +1,4 @@
+from MyException import MyException
 from TestResult import TestResult
 
 
@@ -18,7 +19,7 @@ class TestCase:
         try:
             method = getattr(self, self.name)
             method()
-        except:
+        except MyException:
             result.testFailed()
         self.tearDown()
         return result

@@ -1,3 +1,4 @@
+from MyException import MyException
 from TestCase import TestCase
 
 
@@ -10,7 +11,7 @@ class WasRun(TestCase):
         self.log = self.log + "testMethod "
 
     def testBrokenMethod(self):
-        raise Exception
+        raise MyException
 
     def setUp(self):
         self.log = "setUp "
